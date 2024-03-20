@@ -1,6 +1,5 @@
 package com.fiap.postech.hackatonworktimemanagement.domain.entities.registro;
 
-public enum TipoBatida {
-
+public enum TipoRegistro {
     ENTRADA, SAIDA;
 }

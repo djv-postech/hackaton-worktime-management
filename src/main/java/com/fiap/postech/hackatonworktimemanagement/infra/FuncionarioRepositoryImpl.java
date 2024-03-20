@@ -6,8 +6,10 @@ import com.fiap.postech.hackatonworktimemanagement.infra.converter.FuncionarioCo
 import com.fiap.postech.hackatonworktimemanagement.infra.entity.FuncionarioEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.webjars.NotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -19,20 +21,22 @@ public class FuncionarioRepositoryImpl implements FuncionarioRepository {
 
     public Funcionario cadastrarFuncionario(Funcionario funcionario) {
         FuncionarioEntity funcionarioEntity = funcionarioRepositoryMysql.save(FuncionarioEntity.from(funcionario));
-        return funcionarioConverter.convertFrom(funcionarioEntity);
+        return funcionarioConverter.from(funcionarioEntity);
     }
 
     @Override
     public List<Funcionario> todosOsFuncionarios() {
-        return this.funcionarioRepositoryMysql.findAll().stream()
-                .map(funcionarioConverter::convertFrom)
+        return funcionarioRepositoryMysql.findAll().stream()
+                .map(funcionarioConverter::from)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Funcionario buscarFuncionarioPorMatricula(String matricula) {
-        FuncionarioEntity funcionarioEntity =  this.funcionarioRepositoryMysql.findByMatricula(matricula);
-        return funcionarioConverter.convertFrom(funcionarioEntity);
+        Optional<FuncionarioEntity> funcionarioEntity =  this.funcionarioRepositoryMysql.findByMatricula(matricula);
+        return funcionarioEntity.map(funcionarioConverter::from)
+                .orElseThrow(() -> new NotFoundException(
+                        "Funcionário de matricula: " + matricula + " não encontrado"));
     }
 
 

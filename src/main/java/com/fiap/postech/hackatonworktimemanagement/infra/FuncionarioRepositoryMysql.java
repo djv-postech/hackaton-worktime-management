@@ -4,8 +4,10 @@ import com.fiap.postech.hackatonworktimemanagement.infra.entity.FuncionarioEntit
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface FuncionarioRepositoryMysql extends JpaRepository<FuncionarioEntity, Integer> {
 
-    FuncionarioEntity findByMatricula(String matricula);
+    Optional<FuncionarioEntity> findByMatricula(String matricula);
 }

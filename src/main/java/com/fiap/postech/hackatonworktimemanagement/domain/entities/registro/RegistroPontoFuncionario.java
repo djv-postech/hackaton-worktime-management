@@ -9,16 +9,16 @@ public class RegistroPontoFuncionario {
     public String matricula;
     public LocalDate data;
     public LocalTime hora;
-    public TipoBatida tipoBatida;
+    public TipoRegistro tipoRegistro;
 
     public RegistroPontoFuncionario() {
     }
 
-    public RegistroPontoFuncionario(String matricula, LocalDate data, LocalTime hora, TipoBatida tipoBatida) {
+    public RegistroPontoFuncionario(String matricula, LocalDate data, LocalTime hora, TipoRegistro tipoRegistro) {
         this.matricula = matricula;
         this.data = data;
         this.hora = hora;
-        this.tipoBatida = tipoBatida;
+        this.tipoRegistro = tipoRegistro;
     }
 
     public String getMatricula() {
@@ -45,12 +45,12 @@ public class RegistroPontoFuncionario {
         this.hora = hora;
     }
 
-    public void setTipoBatida(TipoBatida tipoBatida) {
-        this.tipoBatida = tipoBatida;
+    public void setTipoBatida(TipoRegistro tipoRegistro) {
+        this.tipoRegistro = tipoRegistro;
     }
 
-    public TipoBatida getTipoBatida() {
-        return tipoBatida;
+    public TipoRegistro getTipoBatida() {
+        return tipoRegistro;
     }
 
     public String getDataFormatada() {

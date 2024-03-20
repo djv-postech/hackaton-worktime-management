@@ -1,7 +1,7 @@
 package com.fiap.postech.hackatonworktimemanagement.infra.entity;
 
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionario;
-import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.TipoBatida;
+import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.TipoRegistro;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -15,16 +15,16 @@ public class RegistroPontoFuncionarioEntity {
     private String matricula;
     private LocalDate data;
     private LocalTime hora;
-    private TipoBatida tipoBatida;
+    private TipoRegistro tipoRegistro;
 
     public RegistroPontoFuncionarioEntity() {
     }
 
-    public RegistroPontoFuncionarioEntity(String matricula, LocalDate data, LocalTime hora, TipoBatida tipoBatida) {
+    public RegistroPontoFuncionarioEntity(String matricula, LocalDate data, LocalTime hora, TipoRegistro tipoRegistro) {
         this.matricula = matricula;
         this.data = data;
         this.hora = hora;
-        this.tipoBatida = tipoBatida;
+        this.tipoRegistro = tipoRegistro;
     }
 
     public static RegistroPontoFuncionarioEntity from(RegistroPontoFuncionario registroPontoFuncionario) {
@@ -48,7 +48,7 @@ public class RegistroPontoFuncionarioEntity {
         return hora;
     }
 
-    public TipoBatida getTipoBatida() {
-        return tipoBatida;
+    public TipoRegistro getTipoBatida() {
+        return tipoRegistro;
     }
 }

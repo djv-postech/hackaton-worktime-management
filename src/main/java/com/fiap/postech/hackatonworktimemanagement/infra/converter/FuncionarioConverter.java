@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FuncionarioConverter {
 
-    public Funcionario convertFrom(FuncionarioEntity funcionarioEntity) {
+    public Funcionario from(FuncionarioEntity funcionarioEntity) {
         return new Funcionario(funcionarioEntity.getMatricula(), funcionarioEntity.getNome(),
                 funcionarioEntity.getCargo(), funcionarioEntity.getSenha());
     }

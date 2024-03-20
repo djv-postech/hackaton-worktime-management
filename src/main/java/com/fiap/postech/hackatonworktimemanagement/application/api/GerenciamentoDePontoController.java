@@ -1,7 +1,6 @@
 package com.fiap.postech.hackatonworktimemanagement.application.api;
 
 import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosCadastroPonto;
-import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosRegistroPonto;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.ListagemDeRegistro;
@@ -29,7 +28,7 @@ public class GerenciamentoDePontoController {
     public ResponseEntity<DadosRegistroPonto> registrarPonto(@RequestBody DadosCadastroPonto dadosCadastroPonto){
         RegistroPontoFuncionario registroPontoFuncionario = registroDePonto.registrar(dadosCadastroPonto);
         return ResponseEntity.ok(new DadosRegistroPonto(registroPontoFuncionario.matricula,
-                registroPontoFuncionario.getDataFormatada(), registroPontoFuncionario.getHoraFormatada(), registroPontoFuncionario.tipoBatida));
+                registroPontoFuncionario.getDataFormatada(), registroPontoFuncionario.getHoraFormatada(), registroPontoFuncionario.tipoRegistro));
     }
 
     @PostMapping("/registros/{matricula}")

@@ -29,7 +29,7 @@ public class RegistrarPontoFuncionario {
         registroPonto.setMatricula(funcionario.getMatricula());
         registroPonto.setData(LocalDate.now());
         registroPonto.setHora(LocalTime.now());
-        registroPonto.setTipoBatida(dadosCadastroPonto.tipoBatida());
+        registroPonto.setTipoBatida(dadosCadastroPonto.tipoRegistro());
 
     return registroPontoFuncionarioRepository.registrarPonto(registroPonto);
     }

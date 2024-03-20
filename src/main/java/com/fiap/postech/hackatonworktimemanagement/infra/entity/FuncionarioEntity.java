@@ -10,9 +10,9 @@ import jakarta.persistence.Id;
 @Entity
 public class FuncionarioEntity {
 
-  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
   private String nome;
+
+  @Id
   private String matricula;
   private Cargo cargo;
   private String senha;
@@ -30,10 +30,6 @@ public class FuncionarioEntity {
   public static FuncionarioEntity from(Funcionario funcionario) {
     return new FuncionarioEntity(funcionario.getNome(), funcionario.getMatricula(),
             funcionario.getCargo(), funcionario.getSenha());
-  }
-
-  public Integer getId() {
-    return id;
   }
 
   public String getNome() {
