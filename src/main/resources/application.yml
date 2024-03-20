@@ -23,3 +23,7 @@ spring:
     level:
       root: ERROR
       org.springframework: ERROR
+
+jwt:
+  # secret: ${JWT_TOKEN_SECRET}
+  secret: jwt-secret
