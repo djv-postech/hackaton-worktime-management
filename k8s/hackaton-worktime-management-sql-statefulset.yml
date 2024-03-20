@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hackaton-worktime-management-mysql-statefulset
+  labels:
+    app: hackaton-worktime-management-mysql
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: hackaton-worktime-management-mysql
+      labels:
+        app: hackaton-worktime-management-mysql
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - name: hackaton-worktime-management-mysql-container
+          image: mysql:latest
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hackaton-worktime-management-mysql-secret-opaque
+                  key: MYSQL_ROOT_PASSWORD
+
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: hackaton-worktime-management-mysql-secret-opaque
+                  key: MYSQL_DATABASE
+  selector:
+    matchLabels:
+      app: hackaton-worktime-management-mysql
+  serviceName: hackaton-worktime-management-mysql-service

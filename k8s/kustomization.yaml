@@ -1,0 +1,7 @@
+resources:
+  - hackaton-worktime-management-secrets.yml
+  - hackaton-worktime-management-sql-secrets.yml
+  - hackaton-worktime-management-svc.yml
+  - hackaton-worktime-management-sql-svc.yml
+  - hackaton-worktime-management-deployment.yml
+  - hackaton-worktime-management-sql-statefulset.yml

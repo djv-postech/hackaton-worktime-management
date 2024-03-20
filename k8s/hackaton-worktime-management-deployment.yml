@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hackaton-worktime-management-deployment
+  labels:
+    app: hackaton-worktime-management
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: hackaton-worktime-management
+      labels:
+        app: hackaton-worktime-management
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - name: hackaton-worktime-management-container
+          image: soatpostech/hackaton-worktime-management:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: hackaton-worktime-management-secret-opaque
+                  key: MYSQL_HOST
+
+            - name: MYSQL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: hackaton-worktime-management-secret-opaque
+                  key: MYSQL_USERNAME
+
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hackaton-worktime-management-secret-opaque
+                  key: MYSQL_PASSWORD
+
+            - name: MYSQL_DB
+              valueFrom:
+                secretKeyRef:
+                  name: hackaton-worktime-management-secret-opaque
+                  key: MYSQL_DB
+
+#            - name: RABBIT_HOST
+#              valueFrom:
+#                secretKeyRef:
+#                  name: fastfood-product-management-secret-opaque
+#                  key: RABBIT_HOST
+#
+#            - name: RABBIT_USERNAME
+#              valueFrom:
+#                secretKeyRef:
+#                  name: fastfood-product-management-secret-opaque
+#                  key: RABBIT_USERNAME
+#
+#            - name: RABBIT_PASSWORD
+#              valueFrom:
+#                secretKeyRef:
+#                  name: fastfood-product-management-secret-opaque
+#                  key: RABBIT_PASSWORD
+
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health/
+#              port: 8080
+#            periodSeconds: 10
+#            failureThreshold: 3
+#            initialDelaySeconds: 30
+#          readinessProbe:
+#             httpGet:
+#               path: /actuator/health
+#               port: 8080
+#             periodSeconds: 10
+#             failureThreshold: 5
+#             initialDelaySeconds: 10
+#          resources:
+#            requests:
+#              cpu: 10m
+  selector:
+    matchLabels:
+      app: fastfood-product-management
