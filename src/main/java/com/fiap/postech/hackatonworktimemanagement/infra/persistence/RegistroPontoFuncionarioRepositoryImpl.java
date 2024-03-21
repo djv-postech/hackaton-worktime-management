@@ -1,9 +1,9 @@
-package com.fiap.postech.hackatonworktimemanagement.infra;
+package com.fiap.postech.hackatonworktimemanagement.infra.persistence;
 
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionarioRepository;
-import com.fiap.postech.hackatonworktimemanagement.infra.converter.RegistroPontoFuncionarioConverter;
-import com.fiap.postech.hackatonworktimemanagement.infra.entity.FuncionarioEntity;
+import com.fiap.postech.hackatonworktimemanagement.infra.persistence.repository.RegistroPontoFuncionarioRepositoryMysql;
+import com.fiap.postech.hackatonworktimemanagement.infra.persistence.repository.converter.RegistroPontoFuncionarioConverter;
 import com.fiap.postech.hackatonworktimemanagement.infra.entity.RegistroPontoFuncionarioEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

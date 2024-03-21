@@ -1,4 +1,4 @@
-package com.fiap.postech.hackatonworktimemanagement.infra;
+package com.fiap.postech.hackatonworktimemanagement.infra.persistence.repository;
 
 import com.fiap.postech.hackatonworktimemanagement.infra.entity.RegistroPontoFuncionarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.fiap.postech.hackatonworktimemanagement.infra.converter;
+package com.fiap.postech.hackatonworktimemanagement.infra.persistence.repository.converter;
 
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.infra.entity.RegistroPontoFuncionarioEntity;

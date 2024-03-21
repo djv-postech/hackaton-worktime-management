@@ -1,4 +1,4 @@
-package com.fiap.postech.hackatonworktimemanagement.infra;
+package com.fiap.postech.hackatonworktimemanagement.infra.config;
 
 import org.springframework.context.annotation.Configuration;
 
