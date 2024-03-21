@@ -39,12 +39,6 @@ spec:
                   name: hackaton-worktime-management-secret-opaque
                   key: MYSQL_PASSWORD
 
-            - name: MYSQL_DB
-              valueFrom:
-                secretKeyRef:
-                  name: hackaton-worktime-management-secret-opaque
-                  key: MYSQL_DB
-
 #            - name: RABBIT_HOST
 #              valueFrom:
 #                secretKeyRef:
