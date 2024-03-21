@@ -10,6 +10,7 @@ import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.Regi
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
 @Configuration
 public class BeanConfiguration {
 
@@ -45,7 +46,5 @@ public class BeanConfiguration {
     public AutenticacaoDeFuncionario autenticacaoDeFuncionario(){
         return new AutenticacaoDeFuncionario(funcionarioRepository);
     }
-
-
 
 }

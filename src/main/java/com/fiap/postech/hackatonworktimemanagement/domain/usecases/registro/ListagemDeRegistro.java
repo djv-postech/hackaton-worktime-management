@@ -3,6 +3,7 @@ package com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionarioRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class ListagemDeRegistro {
@@ -13,7 +14,7 @@ public class ListagemDeRegistro {
         this.registroPontoFuncionarioRepository = registroPontoFuncionarioRepository;
     }
 
-    public List<RegistroPontoFuncionario> listarTodosOsRegistros(String matricula) {
-        return registroPontoFuncionarioRepository.listarTodosOsRegistros(matricula);
+    public List<RegistroPontoFuncionario> listarTodosOsRegistrosDePontoPorData(String matricula, LocalDate data) {
+        return registroPontoFuncionarioRepository.listarTodosOsRegistrosPorData(matricula, data);
     }
 }

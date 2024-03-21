@@ -1,16 +1,13 @@
-package com.fiap.postech.hackatonworktimemanagement.application.api;
+package com.fiap.postech.hackatonworktimemanagement.application.api.controllers;
 
-import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosCadastroPonto;
-import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosRegistroPonto;
+import com.fiap.postech.hackatonworktimemanagement.application.api.controllers.records.*;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionario;
+import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.TipoRegistro;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.ListagemDeRegistro;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.RegistrarPontoFuncionario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/ponto")
@@ -31,14 +28,18 @@ public class GerenciamentoDePontoController {
                 registroPontoFuncionario.getDataFormatada(), registroPontoFuncionario.getHoraFormatada(), registroPontoFuncionario.tipoRegistro));
     }
 
-    @PostMapping("/registros/{matricula}")
-    public ResponseEntity<List<DadosRegistroPonto>> registros(@PathVariable String matricula){
+    @PostMapping("/registros/data")
+    public ResponseEntity<DadosRegistroDiario> registrosPorDia(@RequestBody DadosMatriculaData dadosMatriculaData){
         List<RegistroPontoFuncionario> registroPontoFuncionario = listagemDeRegistro
-                .listarTodosOsRegistros(matricula);
-        return Objects.nonNull(registroPontoFuncionario)
-                ? ResponseEntity.ok(registroPontoFuncionario.stream().map(DadosRegistroPonto::new)
-                .collect(Collectors.toList()))
-                : ResponseEntity.notFound().build();
+                .listarTodosOsRegistrosDePontoPorData(dadosMatriculaData.matricula(), dadosMatriculaData.data());
+
+        if(registroPontoFuncionario.size() % 2 != 0){
+            throw new RuntimeException("Você tem batidas inconsistêntes, regularize sua situação.");
+        }
+
+        DadosRegistroDiario dadosRegistroDiario = RegistroHelper.compilarRegistrosDiario(dadosMatriculaData, registroPontoFuncionario);
+
+        return ResponseEntity.ok(dadosRegistroDiario);
 
     }
 }
