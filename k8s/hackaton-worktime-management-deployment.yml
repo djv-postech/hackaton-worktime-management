@@ -76,4 +76,4 @@ spec:
 #              cpu: 10m
   selector:
     matchLabels:
-      app: fastfood-product-management
+      app: hackaton-worktime-management
