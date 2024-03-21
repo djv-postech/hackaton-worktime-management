@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Build Project and Generate Docker Image
-      run: mvn clean install -DskipTests --file pom.xml
+      run: mvn clean package -DskipTests --file pom.xml
    
     - name: Push Image to DockerHub
       run: mvn dockerfile:push
