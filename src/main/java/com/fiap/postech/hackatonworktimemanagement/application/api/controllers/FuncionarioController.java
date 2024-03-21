@@ -1,7 +1,7 @@
-package com.fiap.postech.hackatonworktimemanagement.application.api;
+package com.fiap.postech.hackatonworktimemanagement.application.api.controllers;
 
-import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosCadastroFuncionario;
-import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosFuncionario;
+import com.fiap.postech.hackatonworktimemanagement.application.api.controllers.records.DadosCadastroFuncionario;
+import com.fiap.postech.hackatonworktimemanagement.application.api.controllers.records.DadosFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.Funcionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.funcionario.CadastroDeFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.funcionario.ListagemDeFuncionario;

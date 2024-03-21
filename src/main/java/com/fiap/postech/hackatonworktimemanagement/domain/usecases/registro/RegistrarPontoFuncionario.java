@@ -1,6 +1,6 @@
 package com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro;
 
-import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosCadastroPonto;
+import com.fiap.postech.hackatonworktimemanagement.application.api.controllers.records.DadosCadastroPonto;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.Funcionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.FuncionarioRepository;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionario;

@@ -8,6 +8,7 @@ import com.fiap.postech.hackatonworktimemanagement.infra.entity.RegistroPontoFun
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,8 +26,8 @@ public class RegistroPontoFuncionarioRepositoryImpl implements RegistroPontoFunc
     }
 
     @Override
-    public List<RegistroPontoFuncionario> listarTodosOsRegistros(String matricula) {
-        return registroPontoFuncionarioRepositoryMysql.findByMatricula(matricula)
+    public List<RegistroPontoFuncionario> listarTodosOsRegistrosPorData(String matricula, LocalDate data) {
+        return registroPontoFuncionarioRepositoryMysql.findByMatriculaAndData(matricula, data)
                 .stream()
                 .map(registroPontoFuncionarioConverter::convertFrom)
                 .collect(Collectors.toList());

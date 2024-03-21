@@ -1,4 +1,4 @@
-package com.fiap.postech.hackatonworktimemanagement.application.api.records;
+package com.fiap.postech.hackatonworktimemanagement.application.api.controllers.records;
 
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.TipoRegistro;
 

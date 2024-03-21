@@ -1,6 +1,5 @@
 package com.fiap.postech.hackatonworktimemanagement.application.api;
 
-import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.funcionario.AutenticacaoDeFuncionario;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;

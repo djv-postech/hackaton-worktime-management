@@ -2,7 +2,6 @@ package com.fiap.postech.hackatonworktimemanagement.domain.usecases.funcionario;
 
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.Funcionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.FuncionarioRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.webjars.NotFoundException;
 
 
