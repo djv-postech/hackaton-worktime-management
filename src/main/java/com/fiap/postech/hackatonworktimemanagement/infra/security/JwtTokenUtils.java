@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import static java.lang.String.format;
+
 
 @Component
 @Slf4j
@@ -55,11 +57,11 @@ public class JwtTokenUtils implements Serializable {
 
     private String gerarToken(Map<String, Object> reivindicacoes, String subject) {
 
-        return Jwts.builder()
+        return format("Bearer %s", Jwts.builder()
                 .setSubject(subject)
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDADE * 1000))
                 .signWith(SignatureAlgorithm.HS256, secret)
-                .compact();
+                .compact());
 
     }
 
