@@ -47,6 +47,4 @@ public class BeanConfiguration {
         return new AutenticacaoDeFuncionario(funcionarioRepository);
     }
 
-
-
 }
