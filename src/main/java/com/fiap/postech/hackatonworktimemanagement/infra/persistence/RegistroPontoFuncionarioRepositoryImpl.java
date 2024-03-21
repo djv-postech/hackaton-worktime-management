@@ -33,5 +33,11 @@ public class RegistroPontoFuncionarioRepositoryImpl implements RegistroPontoFunc
                 .collect(Collectors.toList());
     }
 
-
+    @Override
+    public List<RegistroPontoFuncionario> listarTodosOsRegistrosPorMatricula(String matricula) {
+        return registroPontoFuncionarioRepositoryMysql.findByMatricula(matricula)
+                .stream()
+                .map(registroPontoFuncionarioConverter::convertFrom)
+                .collect(Collectors.toList());
+    }
 }

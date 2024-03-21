@@ -45,7 +45,7 @@ public class RegistrarPontoFuncionario {
          funcionarioRepository
                 .buscarFuncionarioPorMatricula(dadosCadastroPonto.matricula());
 
-        var registros =  registroPontoFuncionarioRepository.listarTodosOsRegistrosPorData(dadosCadastroPonto.matricula(), LocalDate.now());
+        var registros =  registroPontoFuncionarioRepository.listarTodosOsRegistrosPorMatricula(dadosCadastroPonto.matricula());
 
        registros.stream()
                 .max(Comparator.comparing(RegistroPontoFuncionario::getData)

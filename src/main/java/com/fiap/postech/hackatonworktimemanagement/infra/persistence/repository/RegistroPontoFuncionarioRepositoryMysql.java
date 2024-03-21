@@ -11,4 +11,7 @@ import java.util.List;
 public interface RegistroPontoFuncionarioRepositoryMysql extends JpaRepository<RegistroPontoFuncionarioEntity, Integer> {
 
     List<RegistroPontoFuncionarioEntity> findByMatriculaAndData(String matricula, LocalDate data);
+
+    List<RegistroPontoFuncionarioEntity> findByMatricula(String matricula);
+
 }

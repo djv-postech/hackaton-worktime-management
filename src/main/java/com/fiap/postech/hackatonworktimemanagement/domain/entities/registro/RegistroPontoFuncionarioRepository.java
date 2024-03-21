@@ -8,4 +8,7 @@ public interface RegistroPontoFuncionarioRepository {
     RegistroPontoFuncionario registrarPonto(RegistroPontoFuncionario registroPontoFuncionario);
 
     List<RegistroPontoFuncionario> listarTodosOsRegistrosPorData(String matricula, LocalDate data);
+
+    List<RegistroPontoFuncionario> listarTodosOsRegistrosPorMatricula(String matricula);
+
 }
