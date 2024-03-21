@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 public class RegistroPontoFuncionario {
 
     public String matricula;
+
     public LocalDate data;
     public LocalTime hora;
     public TipoRegistro tipoRegistro;

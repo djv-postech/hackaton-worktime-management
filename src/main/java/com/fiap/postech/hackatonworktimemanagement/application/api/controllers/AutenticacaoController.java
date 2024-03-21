@@ -1,4 +1,4 @@
-package com.fiap.postech.hackatonworktimemanagement.application.api;
+package com.fiap.postech.hackatonworktimemanagement.application.api.controllers;
 
 import com.fiap.postech.hackatonworktimemanagement.application.api.records.DadosAutenticacaoFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.Funcionario;

@@ -5,9 +5,16 @@ import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.F
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.FuncionarioRepository;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionarioRepository;
+import com.fiap.postech.hackatonworktimemanagement.domain.exceptions.TipoDeRegistroInvalidoException;
+import org.apache.coyote.BadRequestException;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Optional;
+
+import static java.lang.String.format;
 
 public class RegistrarPontoFuncionario {
 
@@ -22,15 +29,30 @@ public class RegistrarPontoFuncionario {
 
     public RegistroPontoFuncionario registrar(DadosCadastroPonto dadosCadastroPonto) {
 
-    Funcionario funcionario = funcionarioRepository
-            .buscarFuncionarioPorMatricula(dadosCadastroPonto.matricula());
+        validarRegistro(dadosCadastroPonto);
 
         RegistroPontoFuncionario registroPonto = new RegistroPontoFuncionario();
-        registroPonto.setMatricula(funcionario.getMatricula());
+        registroPonto.setMatricula(dadosCadastroPonto.matricula());
         registroPonto.setData(LocalDate.now());
         registroPonto.setHora(LocalTime.now());
         registroPonto.setTipoBatida(dadosCadastroPonto.tipoRegistro());
 
     return registroPontoFuncionarioRepository.registrarPonto(registroPonto);
+    }
+
+    private void validarRegistro(DadosCadastroPonto dadosCadastroPonto){
+
+         funcionarioRepository
+                .buscarFuncionarioPorMatricula(dadosCadastroPonto.matricula());
+
+        var registros =  registroPontoFuncionarioRepository.listarTodosOsRegistrosPorData(dadosCadastroPonto.matricula(), LocalDate.now());
+
+       registros.stream()
+                .max(Comparator.comparing(RegistroPontoFuncionario::getData)
+                        .thenComparing(RegistroPontoFuncionario::getHora))
+                 .filter(registro -> registro.tipoRegistro.equals(dadosCadastroPonto.tipoRegistro())).ifPresent(s -> {
+            throw new TipoDeRegistroInvalidoException(format("Tipo de registro %s inválido, já foi registrado previamente.", dadosCadastroPonto.tipoRegistro()));
+        });;
+
     }
 }
