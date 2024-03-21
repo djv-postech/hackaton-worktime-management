@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static com.fiap.postech.hackatonworktimemanagement.infra.encoder.FuncionarioEncoder.decode;
+
 @RestController
 @RequestMapping("/funcionario")
 @Tag(name = "Funcionario", description = "Rest API para operações de funcionarios")
@@ -28,18 +30,20 @@ public class FuncionarioController {
 
     @PostMapping
     private ResponseEntity<DadosFuncionario> cadastrarFuncionario(
-            @RequestBody DadosCadastroFuncionario dadosCadastroFuncionario){
+            @RequestBody DadosCadastroFuncionario dadosCadastroFuncionario) {
 
         Funcionario funcionario = cadastroDeFuncionario.cadastrarFuncionario(
                 new Funcionario(dadosCadastroFuncionario.matricula(), dadosCadastroFuncionario.nome(),
                         dadosCadastroFuncionario.cargo(), dadosCadastroFuncionario.senha()));
+
+        funcionario = decode(funcionario);
 
         return ResponseEntity.ok(new DadosFuncionario(funcionario.getNome(), funcionario.getMatricula(),
                 funcionario.getCargo().toString()));
     }
 
     @GetMapping("/todos")
-    private ResponseEntity<List<DadosFuncionario>> todosOsFuncionarios(){
+    private ResponseEntity<List<DadosFuncionario>> todosOsFuncionarios() {
 
         List<Funcionario> funcionarios = listagemDeFuncionario.listarTodosOsFuncionarios();
 

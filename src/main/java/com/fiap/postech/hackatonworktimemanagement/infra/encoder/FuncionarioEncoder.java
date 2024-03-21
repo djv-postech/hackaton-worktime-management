@@ -1,5 +1,6 @@
 package com.fiap.postech.hackatonworktimemanagement.infra.encoder;
 
+import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.Funcionario;
 import com.fiap.postech.hackatonworktimemanagement.infra.entity.FuncionarioEntity;
 import lombok.NoArgsConstructor;
 
@@ -28,6 +29,13 @@ public final class FuncionarioEncoder {
         String matricula = descriptografar(funcionarioEntity.getMatricula());
         String senha = descriptografar(funcionarioEntity.getSenha());
         return new FuncionarioEntity(nome, matricula, funcionarioEntity.getCargo(), senha);
+    }
+
+    public static Funcionario decode(Funcionario funcionario) {
+        String nome = descriptografar(funcionario.getNome());
+        String matricula = descriptografar(funcionario.getMatricula());
+        String senha = descriptografar(funcionario.getSenha());
+        return new Funcionario(nome, matricula, funcionario.getCargo(), senha);
     }
 
     public static String criptografar(String texto) {

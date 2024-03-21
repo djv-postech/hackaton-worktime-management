@@ -32,6 +32,7 @@ public class FuncionarioRepositoryImpl implements FuncionarioRepository {
     @Override
     public List<Funcionario> todosOsFuncionarios() {
         return funcionarioRepositoryMysql.findAll().stream()
+                .map(FuncionarioEncoder::decode)
                 .map(funcionarioConverter::from)
                 .collect(Collectors.toList());
     }
