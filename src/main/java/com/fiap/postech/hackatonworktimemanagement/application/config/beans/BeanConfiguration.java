@@ -5,6 +5,7 @@ import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.Regi
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.funcionario.AutenticacaoDeFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.funcionario.CadastroDeFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.funcionario.ListagemDeFuncionario;
+import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.EmissaoEspelhoPonto;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.ListagemDeRegistro;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.RegistrarPontoFuncionario;
 import org.springframework.context.annotation.Bean;
@@ -45,6 +46,11 @@ public class BeanConfiguration {
     @Bean
     public AutenticacaoDeFuncionario autenticacaoDeFuncionario(){
         return new AutenticacaoDeFuncionario(funcionarioRepository);
+    }
+
+    @Bean
+    public EmissaoEspelhoPonto emissaoEspelhoPonto(){
+        return new EmissaoEspelhoPonto(registroPontoFuncionarioRepository);
     }
 
 }
