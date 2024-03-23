@@ -15,7 +15,7 @@ spec:
         sidecar.istio.io/inject: "false"
     spec:
       containers:
-        - name: hackaton-worktime-managementn-rabbit-container
+        - name: hackaton-worktime-management-rabbit-container
           image: rabbitmq:management
           ports:
             - containerPort: 5672
