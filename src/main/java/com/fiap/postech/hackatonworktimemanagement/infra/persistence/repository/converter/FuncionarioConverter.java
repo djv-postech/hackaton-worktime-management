@@ -9,6 +9,6 @@ public class FuncionarioConverter {
 
     public Funcionario from(FuncionarioEntity funcionarioEntity) {
         return new Funcionario(funcionarioEntity.getMatricula(), funcionarioEntity.getNome(),
-                funcionarioEntity.getCargo(), funcionarioEntity.getSenha());
+                funcionarioEntity.getCargo(), funcionarioEntity.getSenha(), funcionarioEntity.getEmail());
     }
 }

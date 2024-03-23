@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
@@ -40,4 +41,19 @@ public class RegistroPontoFuncionarioRepositoryImpl implements RegistroPontoFunc
                 .map(registroPontoFuncionarioConverter::convertFrom)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<RegistroPontoFuncionario> listarRegistrosMensal(String matricula, Integer mes, Integer ano) {
+        List<RegistroPontoFuncionarioEntity> registros = registroPontoFuncionarioRepositoryMysql
+                .listarRegistrosMensal(matricula, mes, ano);
+
+        if(Objects.isNull(registros)){
+            throw new RuntimeException("Não há registros para da data informada");
+        }
+
+        return registroPontoFuncionarioConverter.convertToDomainList(registros);
+
+    }
+
+
 }

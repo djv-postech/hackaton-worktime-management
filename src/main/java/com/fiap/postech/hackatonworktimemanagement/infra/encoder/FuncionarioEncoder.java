@@ -21,21 +21,21 @@ public final class FuncionarioEncoder {
        String nome = criptografar(funcionarioEntity.getNome());
        String matricula = criptografar(funcionarioEntity.getMatricula());
        String senha = criptografar(funcionarioEntity.getSenha());
-       return new FuncionarioEntity(nome, matricula, funcionarioEntity.getCargo(), senha);
+       return new FuncionarioEntity(nome, matricula, funcionarioEntity.getCargo(), senha, funcionarioEntity.getEmail());
     }
 
     public static FuncionarioEntity decode(FuncionarioEntity funcionarioEntity) {
         String nome = descriptografar(funcionarioEntity.getNome());
         String matricula = descriptografar(funcionarioEntity.getMatricula());
         String senha = descriptografar(funcionarioEntity.getSenha());
-        return new FuncionarioEntity(nome, matricula, funcionarioEntity.getCargo(), senha);
+        return new FuncionarioEntity(nome, matricula, funcionarioEntity.getCargo(), senha, funcionarioEntity.getEmail());
     }
 
     public static Funcionario decode(Funcionario funcionario) {
         String nome = descriptografar(funcionario.getNome());
         String matricula = descriptografar(funcionario.getMatricula());
         String senha = descriptografar(funcionario.getSenha());
-        return new Funcionario(nome, matricula, funcionario.getCargo(), senha);
+        return new Funcionario(nome, matricula, funcionario.getCargo(), senha, funcionario.getEmail());
     }
 
     public static String criptografar(String texto) {

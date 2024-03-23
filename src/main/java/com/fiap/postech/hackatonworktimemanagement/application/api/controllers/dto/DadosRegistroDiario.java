@@ -1,4 +1,4 @@
-package com.fiap.postech.hackatonworktimemanagement.application.api.controllers.records;
+package com.fiap.postech.hackatonworktimemanagement.application.api.controllers.dto;
 
 import lombok.Data;
 import java.util.ArrayList;

@@ -2,28 +2,52 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: hackaton-worktime-management
+
   datasource:
     drive-class-name: com.mysql.jdbc.Driver
     username: ${MYSQL_USERNAME:root}
     password: ${MYSQL_PASSWORD:}
     url: jdbc:mysql://${MYSQL_HOST:localhost:3306}/hackaton_company_db
-#  rabbitmq:
-#    host: ${RABBIT_HOST:localhost}
-#    port: 5672
-#    username: ${RABBIT_USERNAME:guest}
-#    password: ${RABBIT_PASSWORD:guest}
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    port: 5672
+    username: ${RABBIT_USERNAME:guest}
+    password: ${RABBIT_PASSWORD:guest}
+    listener:
+      simple:
+        retry:
+          max-attempts: 2
 
   jpa:
     properties:
       hibernate.dialect: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
 
   logging:
     level:
       root: ERROR
       org.springframework: ERROR
 
+  mail:
+    host: live.smtp.mailtrap.io
+    port: 587
+    username: ${MAILTRAP_USERNAME:}
+    password: ${MAILTRAP_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 jwt:
   # secret: ${JWT_TOKEN_SECRET}
   secret: jwt-secret
+
+logging:
+  level:
+    org:
+      springframework:
+        mail: DEBUG

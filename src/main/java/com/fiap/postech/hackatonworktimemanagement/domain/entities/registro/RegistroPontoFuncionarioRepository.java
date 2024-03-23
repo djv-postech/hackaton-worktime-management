@@ -11,4 +11,5 @@ public interface RegistroPontoFuncionarioRepository {
 
     List<RegistroPontoFuncionario> listarTodosOsRegistrosPorMatricula(String matricula);
 
+    List<RegistroPontoFuncionario> listarRegistrosMensal(String matricula, Integer mes, Integer ano);
 }

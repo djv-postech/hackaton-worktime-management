@@ -1,7 +1,7 @@
 package com.fiap.postech.hackatonworktimemanagement.application.api.controllers;
 
-import com.fiap.postech.hackatonworktimemanagement.application.api.controllers.records.DadosCadastroFuncionario;
-import com.fiap.postech.hackatonworktimemanagement.application.api.controllers.records.DadosFuncionario;
+import com.fiap.postech.hackatonworktimemanagement.application.api.controllers.dto.DadosCadastroFuncionario;
+import com.fiap.postech.hackatonworktimemanagement.application.api.controllers.dto.DadosFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.funcionario.Funcionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.funcionario.CadastroDeFuncionario;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.funcionario.ListagemDeFuncionario;
@@ -34,12 +34,12 @@ public class FuncionarioController {
 
         Funcionario funcionario = cadastroDeFuncionario.cadastrarFuncionario(
                 new Funcionario(dadosCadastroFuncionario.matricula(), dadosCadastroFuncionario.nome(),
-                        dadosCadastroFuncionario.cargo(), dadosCadastroFuncionario.senha()));
+                        dadosCadastroFuncionario.cargo(), dadosCadastroFuncionario.senha(), dadosCadastroFuncionario.email()));
 
         funcionario = decode(funcionario);
 
         return ResponseEntity.ok(new DadosFuncionario(funcionario.getNome(), funcionario.getMatricula(),
-                funcionario.getCargo().toString()));
+                funcionario.getCargo().toString(), funcionario.getEmail()));
     }
 
     @GetMapping("/todos")

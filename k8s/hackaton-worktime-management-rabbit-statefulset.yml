@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hackaton-worktime-management-rabbit-statefulset
+  labels:
+    app: hackaton-worktime-management-rabbit
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: hackaton-worktime-management-rabbit
+      labels:
+        app: hackaton-worktime-management-rabbit
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - name: hackaton-worktime-managementn-rabbit-container
+          image: rabbitmq:management
+          ports:
+            - containerPort: 5672
+            - containerPort: 15672
+          env:
+            - name: RABBITMQ_DEFAULT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: hackaton-worktime-management-rabbit-secret-opaque
+                  key: RABBITMQ_DEFAULT_USER
+
+            - name: RABBITMQ_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: hackaton-worktime-management-rabbit-secret-opaque
+                  key: RABBITMQ_DEFAULT_PASS
+
+  selector:
+    matchLabels:
+      app: hackaton-worktime-management-rabbit
+  serviceName: hackaton-worktime-management-rabbit-service

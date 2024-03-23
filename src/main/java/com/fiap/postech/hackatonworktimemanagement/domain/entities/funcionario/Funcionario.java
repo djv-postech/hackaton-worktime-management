@@ -8,11 +8,12 @@ public class Funcionario {
     private String senha;
     private String email;
 
-    public Funcionario(String matricula, String nome, Cargo cargo, String senha) {
+    public Funcionario(String matricula, String nome, Cargo cargo, String senha, String email) {
         this.matricula = matricula;
         this.nome = nome;
         this.cargo = cargo;
         this.senha = senha;
+        this.email = email;
     }
 
     public String getNome() {
@@ -29,5 +30,9 @@ public class Funcionario {
 
     public String getSenha() {
         return senha;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
