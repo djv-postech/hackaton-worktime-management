@@ -3,6 +3,7 @@ package com.fiap.postech.hackatonworktimemanagement.application.api.controllers;
 import com.fiap.postech.hackatonworktimemanagement.application.api.controllers.dto.*;
 import com.fiap.postech.hackatonworktimemanagement.application.service.RegistroHelper;
 import com.fiap.postech.hackatonworktimemanagement.domain.entities.registro.RegistroPontoFuncionario;
+import com.fiap.postech.hackatonworktimemanagement.domain.exceptions.RegistrosInconsistentesException;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.EmissaoEspelhoPonto;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.ListagemDeRegistro;
 import com.fiap.postech.hackatonworktimemanagement.domain.usecases.registro.RegistrarPontoFuncionario;
@@ -25,7 +26,7 @@ public class GerenciamentoDePontoController {
         this.emissaoEspelhoPonto = emissaoEspelhoPonto;
     }
 
-    @PostMapping("/registrar/{matricula}")
+    @PostMapping("/registrar")
     public ResponseEntity<DadosRegistroPonto> registrarPonto(@RequestBody DadosCadastroPonto dadosCadastroPonto){
         RegistroPontoFuncionario registroPontoFuncionario = registroDePonto.registrar(dadosCadastroPonto);
         return ResponseEntity.ok(new DadosRegistroPonto(registroPontoFuncionario.matricula,
@@ -38,7 +39,7 @@ public class GerenciamentoDePontoController {
                 .listarTodosOsRegistrosDePontoPorData(dadosMatriculaData.matricula(), dadosMatriculaData.data());
 
         if(registroPontoFuncionario.size() % 2 != 0){
-            throw new RuntimeException("Você tem batidas inconsistêntes, regularize sua situação.");
+            throw new RegistrosInconsistentesException("Você tem registros inconsistentes, regularize sua situação.");
         }
 
         DadosRegistroDiario dadosRegistroDiario = RegistroHelper.compilarRegistrosDiario(dadosMatriculaData, registroPontoFuncionario);
