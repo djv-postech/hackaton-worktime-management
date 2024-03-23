@@ -13,6 +13,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -70,7 +71,8 @@ public class RegistroHelper {
     }
 
     public static String getMesEmPortugues(int monthValue) {
-        return new DateFormatSymbols().getMonths()[monthValue-1];
+        Locale locale = new Locale("pt", "BR")
+        return new DateFormatSymbols(locale).getMonths()[monthValue-1];
     }
 
     public static String criarRelatorioEspelhoPonto(List<RegistroPontoFuncionario> registros) {

@@ -10,8 +10,8 @@ public class DadosSolicitacaoEspelho {
 
     private DadosMes mes;
 
-    @JsonProperty("year")
-    @Pattern(regexp = "^\\d{4}$", message = "Year must be in yyyy format")
+    @JsonProperty("ano")
+    @Pattern(regexp = "^\\d{4}$", message = "Ano deve ser no formato aaaa")
     private Integer ano;
 
     public DadosSolicitacaoEspelho(String matricula, DadosMes mes, Integer ano) {

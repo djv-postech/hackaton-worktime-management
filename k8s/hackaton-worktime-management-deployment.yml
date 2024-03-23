@@ -69,23 +69,6 @@ spec:
                   name: hackaton-worktime-management-secret-opaque
                   key: RABBIT_PASSWORD
 
-#          livenessProbe:
-#            httpGet:
-#              path: /actuator/health/
-#              port: 8080
-#            periodSeconds: 10
-#            failureThreshold: 3
-#            initialDelaySeconds: 30
-#          readinessProbe:
-#             httpGet:
-#               path: /actuator/health
-#               port: 8080
-#             periodSeconds: 10
-#             failureThreshold: 5
-#             initialDelaySeconds: 10
-#          resources:
-#            requests:
-#              cpu: 10m
   selector:
     matchLabels:
       app: hackaton-worktime-management
