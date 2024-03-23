@@ -45,9 +45,3 @@ spring:
 jwt:
   # secret: ${JWT_TOKEN_SECRET}
   secret: jwt-secret
-
-logging:
-  level:
-    org:
-      springframework:
-        mail: DEBUG
