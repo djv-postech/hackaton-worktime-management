@@ -9,6 +9,7 @@ Serviço responsável pelo gerenciamento de registro de ponto de funcionários
 - Geração de relatório de ponto e envio via e-mail (solicitação processada via Rabbit)
 <br>
 <br>
+
 ### [Tecnologias](#Tecnologias)
 ***
 * Java
