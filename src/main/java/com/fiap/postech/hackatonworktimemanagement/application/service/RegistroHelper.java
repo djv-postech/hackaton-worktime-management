@@ -71,7 +71,7 @@ public class RegistroHelper {
     }
 
     public static String getMesEmPortugues(int monthValue) {
-        Locale locale = new Locale("pt", "BR")
+        Locale locale = new Locale("pt", "BR");
         return new DateFormatSymbols(locale).getMonths()[monthValue-1];
     }
 
